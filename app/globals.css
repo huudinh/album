@@ -1,42 +1,70 @@
+/* Định nghĩa các biến CSS cho màu nền và màu chữ */
 :root {
-  --background: #ffffff;
+  --background: #000;
+  /* Nền sáng */
   --foreground: #171717;
+  /* Chữ tối */
 }
 
+/* Áp dụng chủ đề tối khi hệ thống ưu tiên dark mode */
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
-    --foreground: #ededed;
+    /* Nền tối */
+    --foreground: #000;
+    /* Chữ sáng */
+  }
+
+  /* Đảm bảo các thành phần UI của trình duyệt (ví dụ: thanh cuộn, thanh input) cũng theo chủ đề tối */
+  html {
+    color-scheme: dark;
   }
 }
 
+/* Reset CSS cơ bản cho tất cả các phần tử */
+* {
+  box-sizing: border-box;
+  /* Bao gồm padding và border trong chiều rộng/chiều cao của phần tử */
+  padding: 0;
+  /* Xóa padding mặc định */
+  margin: 0;
+  /* Xóa margin mặc định */
+}
+
+/* Đặt chiều rộng tối đa và ngăn chặn cuộn ngang cho html và body */
 html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
+  /* Ngăn chặn bất kỳ cuộn ngang không mong muốn nào */
 }
 
+/* Định kiểu cho body */
 body {
   color: var(--foreground);
+  /* Sử dụng màu chữ từ biến CSS */
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  /* Sử dụng màu nền từ biến CSS */
+
+  /* Thiết lập font chữ, bao gồm các font dự phòng (system-ui là font mặc định của hệ điều hành) */
+  font-family: Arial, Helvetica, sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+
+  /* Cải thiện hiển thị font */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  /* Đảm bảo body chiếm toàn bộ chiều cao của viewport */
+  min-height: 100vh;
+
+  /* Thiết lập kích thước font và khoảng cách dòng cơ bản để dễ đọc */
+  font-size: 16px;
+  line-height: 1.5;
 }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
-
+/* Định kiểu cho thẻ a (liên kết) */
 a {
   color: inherit;
+  /* Kế thừa màu chữ từ phần tử cha */
   text-decoration: none;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+  /* Xóa gạch chân mặc định của liên kết */
 }
